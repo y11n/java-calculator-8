@@ -6,6 +6,10 @@ import java.util.List;
 
 public class AddCalculator {
     public int add(String input) {
+        // 빈 문자열 입력 시 0 반환
+        if (input == null || input.isEmpty()) {
+            return 0;
+        }
         // 기본 구분자 사용 시, 기본 구분자 외의 문자가 포함되었는지 검증
         ValidatorUtils.validateBasicDelimiter(input);
 
