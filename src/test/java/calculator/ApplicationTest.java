@@ -32,6 +32,29 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 잘못된_커스텀_구분자_사용() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("//;n1;2;3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void 빈_문자열_입력() {
+        assertSimpleTest(() -> {
+            run("");
+            assertThat(output()).contains("결과 : 0");
+        });
+    }
+
+    @Test
+    void 잘못된_구분자_사용() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1;2;3"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
     @Override
     public void runMain() {
